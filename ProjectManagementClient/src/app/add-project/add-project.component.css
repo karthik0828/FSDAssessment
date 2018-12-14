@@ -1,0 +1,24 @@
+body{
+    background-color:rgb(217, 236, 243);
+    margin:25px;
+}
+h4{
+    padding:5px;
+}
+
+table {
+    border-collapse: collapse;
+} 
+td{
+    font-weight: normal;
+}
+th{
+    color: #33238A;
+}
+
+a{
+    text-decoration:none; display:inline-block;        padding:5px;      margin:5px;        border-radius:5px;          background-color:#FADBD8;
+  }
+a:hover {
+     color: red;
+ }

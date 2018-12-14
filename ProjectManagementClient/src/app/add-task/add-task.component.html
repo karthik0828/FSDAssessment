@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+   <meta charset="utf-8">
+   <meta name="viewport" content="width device-width, intial-scale 1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body class="bg-warning">
+  <div class="container-fluid"> 
+<h4 class="bg-primary">ADD NEW TASK</h4>
+  <form materialize class="col s12" [formGroup]="form" (ngSubmit)="addNewTask()">
+      
+    <div class="form-group">
+      <div class="input-field col s12">
+        <div formGroupName="project">  
+        <label for="projectName">Project Name</label>           
+       <input class="form-control" id="projectName" formControlName="projectName" type="text" [(ngModel)]="task.project.projectName" >     
+      </div>
+    </div>
+    </div>
+    <div class="form-group">
+      <div class="input-field col s12">        
+        <label for="taskName" >Task Name</label>       
+        <input class="form-control" id="taskName" formControlName="taskName" type="text" [(ngModel)]="task.taskName">                
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-field col s12">
+        <label for="parentTaskName">Parent Task Name</label>
+        <div formGroupName="parent">         
+        <input class="form-control" id="parentTaskName" formControlName="parentTaskName" type="text" [(ngModel)]="task.parent.parentTaskName">       
+      </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-field col s12">        
+        <label for="startDate" >Start Date</label>        
+        <input class="form-control" id="startDate" formControlName="startDate" type="date" [(ngModel)]="task.startDate">        
+      </div>
+    </div>
+    <div class="form-group">
+        <div class="input-field col s12">        
+          <label for="endDate" >End Date</label>        
+          <input class="form-control" id="endDate" formControlName="endDate" type="date" [(ngModel)]="task.endDate">        
+        </div>
+      </div>
+      <div class="form-group">
+          <div class="input-field col s12">        
+            <label for="priority" >Task Priority (0 to 30)</label>                    
+            <input class="form-control" id="priority" formControlName="priority" type="number" min="0" max="30" [(ngModel)]="task.priority">        
+          </div>
+        </div> 
+        <div class="form-group">
+          <div class="input-field col s12">        
+            <label for="user" >User Name</label>      
+            <input class="form-control" id="user" formControlName="user" type="text" [(ngModel)]="task.user">
+          </div>
+        </div>      
+    <button class="btn btn-success" type="submit">Save task</button>
+  </form>
+  </div>
+</body>
+
+

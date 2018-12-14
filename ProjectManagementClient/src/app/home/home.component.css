@@ -1,0 +1,7 @@
+div {
+    width: 100%;
+    height: 300px;
+    background-image: url('../../assets/images/proj_app.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    }

@@ -1,0 +1,21 @@
+*{  margin:10px;      padding:10px;}
+body{    
+  background-color:#AED6F1;
+  outline-style: solid;
+  outline-color:#33238A;
+}
+h2{
+   font-family: 'Times Header';
+   text-align:center;
+   text-transform: uppercase;
+   color:#33238A;
+   border-bottom: solid #33238A;
+}
+nav{
+  padding:8px;    margin-top:0px;  margin-bottom:0px;
+}
+nav a{
+  text-decoration:none; display:inline-block;        padding:5px;      margin:5px;        border-radius:5px;          background-color:#FADBD8;
+}
+nav a:hover {
+   color: red; }

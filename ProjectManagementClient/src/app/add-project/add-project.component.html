@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+   <meta charset="utf-8">
+   <meta name="viewport" content="width device-width, intial-scale 1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+</head>
+<body class="bg-warning">
+  <div class="container-fluid"> 
+<h4 class="bg-primary">{{title}}</h4>
+  <form materialize class="col s12" [formGroup]="form" (ngSubmit)="addNewProject()">
+    <div class="form-group">
+      <div class="input-field col s12">        
+        <label for="projectName" >Project Name</label>       
+        <input class="form-control" id="projectName" formControlName="projectName" type="text" [(ngModel)]="project.projectName">                
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-field col s12">        
+        <label for="startDate" >Start Date</label>        
+        <input class="form-control" id="startDate" formControlName="startDate" type="date" [(ngModel)]="project.startDate" >        
+      </div>
+    </div>
+    <div class="form-group">
+        <div class="input-field col s12">        
+          <label for="endDate" >End Date</label>        
+          <input class="form-control" id="endDate" formControlName="endDate" type="date" [(ngModel)]="project.endDate" >        
+        </div>
+      </div>
+      <div class="form-group">
+          <div class="input-field col s12">        
+            <label for="priority" >Project Priority (0 to 30)</label>                    
+            <input class="form-control" id="priority" formControlName="priority" type="number" min="0" max="30" [(ngModel)]="project.priority" >        
+          </div>
+        </div>
+        <div class="form-group">
+            <div class="input-field col s12">        
+              <label for="manager" >Project Manager</label>       
+              <input class="form-control" id="manager" formControlName="manager" type="text" [(ngModel)]="project.manager">                
+            </div>
+          </div>     
+    <button class="btn btn-success" type="submit">Save project</button>
+  </form>
+
+  <table class="table table-responsive table-bordered table-hover">
+    <thead>
+      <tr>      
+        <th>Project ID</th>
+        <th>Project Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Priority</th>        
+        <th>Status</th>
+        <th>Manager</th>
+        <th>Edit</th>
+        <th>End</th>    
+      </tr>   
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects">     
+       <td>{{project.id}}</td>
+       <td>{{project.projectName}}</td>
+       <td>{{project.startDate}}</td>
+       <td>{{project.endDate}}</td>
+       <td>{{project.priority}}</td>    
+      <td>{{project.status}}</td>
+      <td>{{project.manager}}</td>
+      <td><a *ngIf="project.status == 'Open'" [routerLink]="['/editproject', project.id]" >
+        Edit Project</a>
+      </td>    
+      <td>    
+        <a *ngIf="project.status == 'Open'" (click)="endProject(project)"  [routerLink]="['/endproject']" >
+          End Project</a>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</body>
+
+
+

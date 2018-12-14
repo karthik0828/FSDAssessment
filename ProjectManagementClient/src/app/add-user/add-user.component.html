@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+   <meta charset="utf-8">
+   <meta name="viewport" content="width device-width, intial-scale 1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+</head>
+<body class="bg-warning">
+  <div class="container-fluid"> 
+<h4 class="bg-primary">{{title}}</h4>
+  <form materialize class="col s12" [formGroup]="form" (ngSubmit)="addNewUser()">
+    <div class="form-group">
+      <div class="input-field col s12">        
+        <label for="firstName" >First Name</label>       
+        <input class="form-control" id="firstName" formControlName="firstName" type="text" [(ngModel)]="user.firstName">                
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-field col s12">        
+        <label for="lastName" >Last Name</label>        
+        <input class="form-control" id="startDate" formControlName="lastName" type="text" [(ngModel)]="user.lastName" >        
+      </div>
+    </div>
+    <div class="form-group">
+        <div class="input-field col s12">        
+          <label for="empId" >Employee ID</label>        
+          <input class="form-control" id="empId" formControlName="empId" type="text" [(ngModel)]="user.empId" >        
+        </div>
+    </div>      
+    <button class="btn btn-success" type="submit">Save user</button>
+  </form>
+
+  <table class="table table-responsive table-bordered table-hover">
+    <thead>
+      <tr>      
+        <th>User ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Employee ID</th>
+        <th>Edit</th>
+        <th>Delete</th>    
+      </tr>   
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">     
+       <td>{{user.id}}</td>
+       <td>{{user.firstName}}</td>
+       <td>{{user.lastName}}</td>
+       <td>{{user.empId}}</td>
+      <td><a [routerLink]="['/edituser', user.id]" >
+        Edit User</a>
+      </td>    
+      <td>
+        <a (click)="deleteUser(user)" [routerLink]="['/deleteuser']" >
+          Delete User
+        </a>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</body>
+
+
+
+

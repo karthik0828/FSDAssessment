@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>   
+   <meta charset="utf-8">
+   <meta name="viewport" content="width device-width, intial-scale 1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+</head>
+<body>
+<div class="container-fluid">
+   
+<table class="table table-responsive table-bordered table-hover">
+  <thead>
+    <tr>      
+      <th>Task ID</th>
+      <th>Task Name</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Priority</th>
+      <th>Parent Task</th>
+      <th>Status</th>
+      <th>Project</th>
+      <th>Edit</th>
+      <th>End</th>
+      <th>Delete</th>
+  
+    </tr>   
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks">     
+     <td>{{task.id}}</td>
+     <td>{{task.taskName}}</td>
+     <td>{{task.startDate}}</td>
+     <td>{{task.endDate}}</td>
+     <td>{{task.priority}}</td>
+     <td *ngIf="task.parent != null">{{task.parent.parentTaskName}}</td>
+     <td *ngIf="task.parent == null"></td>     
+    <td>{{task.status}}</td>
+    <td *ngIf="task.project != null">{{task.project.projectName}}</td>
+    <td *ngIf="task.project == null"></td>
+    <td><a *ngIf="task.status == 'Open'" [routerLink]="['/edittask', task.id]" >
+      Edit Task</a>
+    </td>    
+    <td>    
+      <a *ngIf="task.status == 'Open'" (click)="endTask(task)"  [routerLink]="['/viewtasks']" >
+        End Task</a>
+    </td>
+    <td>
+      <a (click)="deleteTask(task)" [routerLink]="['/viewtasks']" >
+        Delete Task
+      </a>
+    </td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+</body>
+
+
